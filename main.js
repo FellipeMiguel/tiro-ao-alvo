@@ -5,8 +5,8 @@ pincel.fillStyle = "lightgray";
 pincel.fillRect(0, 0, 600, 400);
 
 let raio = 10;
-let xAleatorio;
-let yAleatorio;
+var xAleatorio;
+var yAleatorio;
 
 function desenhaCirculo(x, y, raio, cor) {
   pincel.fillStyle = cor;
