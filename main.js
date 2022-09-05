@@ -5,6 +5,8 @@ pincel.fillStyle = "lightgray";
 pincel.fillRect(0, 0, 600, 400);
 
 let raio = 10;
+let xAleatorio;
+let yAleatorio;
 
 function desenhaCirculo(x, y, raio, cor) {
   pincel.fillStyle = cor;
@@ -29,10 +31,26 @@ function sorteiaPosicao(maximo) {
 
 function atualizaTela() {
   limpaTela();
-  let xAleatorio = sorteiaPosicao(600);
-  let yAleatorio = sorteiaPosicao(400);
+  xAleatorio = sorteiaPosicao(600);
+  yAleatorio = sorteiaPosicao(400);
 
   desenhaAlvo(xAleatorio, yAleatorio);
 }
 
 setInterval(atualizaTela, 1000);
+
+function dispara(e) {
+  let x = e.pageX - tela.offsetLeft;
+  let y = e.pageY - tela.offsetTop;
+
+  if (
+    x > xAleatorio - raio &&
+    x < xAleatorio + raio &&
+    y > yAleatorio - raio &&
+    y < yAleatorio + raio
+  ) {
+    alert("PARABÉNS! Você acertou o alvo!");
+  }
+}
+
+tela.onclick = dispara;
